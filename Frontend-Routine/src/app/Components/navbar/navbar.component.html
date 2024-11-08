@@ -1,0 +1,73 @@
+<nav *ngIf="showNavbar" class="navbarOwn navbar navbar-expand-lg pt-lg-2 pt-3">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <div class="extremoNavbar me-lg-4">
+      <a routerLink><i class="bi bi-hexagon-half navLinksText" style="font-size: 30px; font-style: normal;"></i></a>
+    </div>
+    <div *ngIf="!isLoggedIn" class="extremoNavbar">
+      <button class="buttonRegister d-lg-none" routerLink="/auth/register">REGÍSTRATE AHORA</button>
+    </div>
+    <div *ngIf="isLoggedIn" class="extremoNavbar d-lg-none">
+      <button class="ms-3 buttonLogout" (click)="logout()">CERRAR SESIÓN</button>
+    </div>
+
+    <div class="extremoNavbar">
+      <div class="d-flex align-items-center ms-auto">
+        <a class="login-hover" routerLink="/profile">
+          <i class="bi bi-person-fill d-lg-none me-2 hoverIt"></i>
+        </a>
+        <button class="custom-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li  class="nav-item ms-2">
+          <a class="nav-link navLinksTextWrapper" aria-expanded="false">
+           <span class="navLinksText ms-1" routerLink="/">INICIO</span>
+          </a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item ms-2">
+          <a class="nav-link navLinksTextWrapper" aria-expanded="false">
+            <i class="fa-solid fa-dumbbell navLinksText"></i> <span class="navLinksText ms-1" routerLink="/entrenamiento/dashboard">ENTRENAMIENTO</span>
+          </a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item ms-2">
+          <a class="nav-link navLinksTextWrapper" aria-expanded="false">
+            <i class="fa-solid fa-utensils navLinksText"></i> <span class="navLinksText ms-1" routerLink="/nutricion/dashboard">NUTRICIÓN</span>
+          </a>
+        </li>
+        <li *ngIf="isLoggedIn && (user.role === 'EMPLEADO' || user.role === 'ADMIN')"  class="nav-item ms-2">
+          <a class="nav-link navLinksTextWrapper" id="navbarDropdown">
+            <i class="fa-solid fa-gears navLinksText"></i> <span class="navLinksText ms-1" routerLink="/gestion/dashboard">GESTIÓN</span>
+          </a>
+        </li>
+        <li *ngIf="isLoggedIn && user.role === 'ADMIN'" class="nav-item ms-2">
+          <a class="nav-link navLinksTextWrapper" aria-expanded="false">
+            <i class="fa-solid fa-user-tie navLinksText"></i> <span class="navLinksText ms-1" routerLink="/admin/dashboard">ADMIN</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="d-none d-lg-flex align-items-center">
+      <ng-container *ngIf="isLoggedIn; else notLoggedIn">
+        <a href class="d-flex align-items-center login-hover" routerLink="/profile">
+          <i class="bi bi-person-fill"></i>
+          <span class="ms-2">{{ user.name }}</span>
+        </a>
+        <button class="ms-3 buttonLogout" (click)="logout()">CERRAR SESIÓN</button>
+      </ng-container>
+      <ng-template #notLoggedIn>
+        <a href class="d-flex align-items-center login-hover" routerLink="/auth/login">
+          <i class="bi bi-person-fill"></i>
+          <span class="ms-2">Iniciar sesión</span>
+        </a>
+        <button class="ms-3 buttonRegister" routerLink="/auth/register">REGÍSTRATE AHORA</button>
+      </ng-template>
+    </div>
+  </div>
+</nav>

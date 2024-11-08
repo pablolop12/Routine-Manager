@@ -1,0 +1,58 @@
+<div class="base">
+    <div class="container mt-5">
+      <div class="row">
+        <div *ngFor="let dieta of currentDietas" class="col-12 col-md-4 mb-4">
+          <div class="rutinaCard h-100" [ngClass]="dieta.active ? 'cardActive' : ''">
+            <div class="rutinaCardBody">
+              <div class="d-flex justify-content-between">
+                <h5 class="card-title m-0">{{ dieta.nombreDieta }}</h5>
+                <div class="d-flex align-items-center">
+                  <div class="circle" [ngClass]="dieta.active ? 'active' : 'inactive'"></div>
+                  <a class="botonEdit ms-1" [routerLink]="['/nutricion/edit-dieta', dieta.id]">
+                    <i class="bi bi-pencil-fill text-light"></i>
+                  </a>
+                  <a class="botonDelete ms-1" (click)="deleteDieta(dieta.id)">
+                    <i class="bi bi-trash3-fill text-light"></i>
+                  </a>
+                </div>
+              </div>
+              <p class="card-text">{{ dieta.descripcion }}</p>
+  
+              <div class="accordion mt-3 mb-3" [id]="'accordion' + dieta.id">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + dieta.id" aria-expanded="false" [attr.aria-controls]="'collapse' + dieta.id">
+                      Ver comidas de la dieta
+                    </button>
+                  </h2>
+                  <div [id]="'collapse' + dieta.id" class="accordion-collapse collapse" [attr.data-bs-parent]="'#accordion' + dieta.id">
+                    <div class="accordion-body">
+                      <ul class="list-group list-group-flush">
+                        <li *ngFor="let dia of getDiasConComidas(dieta.dietaComidas)" class="list-group-item">
+                          <strong>{{ dia.nombreDia }} ({{ dia.dia }}):</strong>
+                          <ul>
+                            <li *ngFor="let comida of dia.comidas">
+                              {{ comida.nombre }} - Cantidad: {{ comida.cantidad }}
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="buttonActivate mt-3" (click)="activateDieta(dieta.id)">
+                Activar Dieta
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <button class="buttonPage" *ngFor="let page of pages; let i = index" (click)="setPage(i)">
+          {{ i + 1 }}
+        </button>
+      </div>
+    </div>
+  </div>
+  

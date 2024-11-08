@@ -1,0 +1,66 @@
+.base {
+  padding: 3vh;
+}
+  
+  .yellow-background {
+    background-color: #ffcc00;
+  }
+  
+  .btnCreate {
+    background-color: #ffcc00;
+    padding-inline: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    font-weight: bold;
+    color: #222e39;
+    transition: ease 0.3s, box-shadow 0.3s ease;
+  }
+  
+  .btnCreate:hover {
+    background-color: #fdd94b;
+    padding-inline: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    font-weight: bold;
+    color: #222e39;
+    transform: translateY(-1px); /* Levantar el botón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
+  }
+  
+  .custom-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .custom-table th, .custom-table td {
+    border: none;
+  }
+  
+  .custom-table thead th {
+    background-color: #fdd94b !important;
+    color: #222e39;
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+  
+  .custom-table tbody td {
+    background-color: #eeeeee !important;
+  }
+  
+  .table-danger {
+    background-color: #f8d7da !important;
+  }
+  
+  .table-warning {
+    background-color: #fff3cd !important;
+  }
+  
+  .table-success {
+    background-color: #d4edda !important;
+  }
+  

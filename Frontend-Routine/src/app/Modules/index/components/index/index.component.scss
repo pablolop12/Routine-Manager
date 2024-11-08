@@ -1,0 +1,24 @@
+.hero-section {
+    background-color: #ffcc00;
+    min-height: calc(100vh - 72px);
+}
+
+.tituloHero{
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+.pHero{
+    font-size: 23px;
+}
+
+.bloqueDer{
+    background-color: white;
+    padding: 15px;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.row{
+    margin-top: 15px;
+}

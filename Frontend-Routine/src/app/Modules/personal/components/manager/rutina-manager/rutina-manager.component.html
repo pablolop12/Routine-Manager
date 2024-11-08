@@ -1,0 +1,73 @@
+<div class="base">
+  <div class="container mt-5">
+    <div class="row">
+      <div *ngFor="let rutina of currentRutinas" class="col-12 col-md-4 mb-4">
+        <div class="rutinaCard h-100"
+          [ngClass]="rutina.active ? 'cardActive' : ''">
+          <div class="rutinaCardBody">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title m-0">{{ rutina.nombreRutina }}</h5>
+              <div class="d-flex align-items-center">
+                <div class="circle"
+                  [ngClass]="rutina.active ? 'active' : 'inactive'"></div>
+                <a class="botonEdit ms-1"
+                  [routerLink]="['/entrenamiento/edit-rutina', rutina.id]">
+                  <i class="bi bi-pencil-fill text-light"></i>
+                </a>
+
+                <a class="botonDelete ms-1" (click)="deleteRutina(rutina.id)">
+                  <i class="bi bi-trash3-fill text-light"></i>
+                </a>
+              </div>
+            </div>
+            <p class="card-text">{{ rutina.descripcion }}</p>
+
+            <div class="accordion mt-3 mb-3" [id]="'accordion' + rutina.id">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapse' + rutina.id"
+                    aria-expanded="false"
+                    [attr.aria-controls]="'collapse' + rutina.id">
+                    Ver ejercicios de la rutina
+                  </button>
+                </h2>
+                <div [id]="'collapse' + rutina.id"
+                  class="accordion-collapse collapse"
+                  [attr.data-bs-parent]="'#accordion' + rutina.id">
+                  <div class="accordion-body">
+                    <ul class="list-group list-group-flush">
+                      <li
+                        *ngFor="let dia of getDiasConEjercicios(rutina.rutinaEjercicios)"
+                        class="list-group-item">
+                        <strong> {{ dia.dia }}:</strong>
+                        <ul>
+                          <li *ngFor="let ejercicio of dia.ejercicios">
+                            {{ ejercicio.nombre }} -
+                            Peso: {{ ejercicio.peso }} Kg
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="buttonActivate mt-3"
+              (click)="activateRutina(rutina.id)">
+              Activar Rutina
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <button class="buttonPage" *ngFor="let page of pages; let i = index"
+        (click)="setPage(i)">
+        {{ i + 1 }}
+      </button>
+    </div>
+
+  </div>
+</div>

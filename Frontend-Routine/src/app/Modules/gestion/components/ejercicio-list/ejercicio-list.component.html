@@ -1,0 +1,51 @@
+<div class="base">
+  <div class="container mt-4">
+    <h2>Lista de Ejercicios</h2>
+
+    <!-- Encabezado Búsqueda/Filtro/Descargar -->
+    <div class="headerSection mb-3 d-flex flex-column flex-md-row w-100">
+      <div class="input-group flex-nowrap mb-2 mb-md-0 me-0 me-md-2" style="flex: 1;">
+        <span class="input-group-text yellow-background" id="addon-wrapping"><i class="bi bi-search"></i></span>
+        <input type="text" class="form-control search-bar" placeholder="Buscar un ejercicio ..." [(ngModel)]="searchTerm" (input)="filterEjercicios()" />
+      </div>
+
+      <div class="d-flex flex-column flex-md-row mb-3 mb-md-0">
+        <div class="input-group mb-2 mb-md-0 me-0 me-md-2">
+          <select class="form-select" [(ngModel)]="selectedCategoria">
+            <option value>Selecciona una categoría</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+            <option value="todo">Todos</option>
+          </select>
+          <button class="btn btn-warning" (click)="filterEjercicios()">Aplicar</button>
+        </div>
+        <button class="btnCreate btn btn-primary mt-2 mt-md-0" routerLink="/gestion/ejercicios/create" style="flex: 0 1 180px; white-space: nowrap; max-height: 50px;">Crear ejercicio</button>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped custom-table">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>DESCRIPCIÓN</th>
+            <th>CATEGORÍA</th>
+            <th>IMAGEN</th>
+            <th class="text-center">ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ejercicio of filteredEjercicios">
+            <td>{{ ejercicio.nombre }}</td>
+            <td>{{ ejercicio.descripcion }}</td>
+            <td>{{ ejercicio.categoria }}</td>
+            <td><img [src]="ejercicio.imagenUrl" alt="{{ ejercicio.nombre }}" width="50"></td>
+            <td class="text-center">
+              <button class="btn btn-warning me-2" [routerLink]="['/gestion/ejercicios/edit', ejercicio.id]">Editar</button>
+              <button class="btn btn-danger" (click)="confirmDeleteEjercicio(ejercicio.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

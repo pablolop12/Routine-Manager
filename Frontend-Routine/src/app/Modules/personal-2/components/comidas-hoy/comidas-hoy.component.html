@@ -1,0 +1,74 @@
+<div class="base">
+  <div class="container">
+    <div class="section">
+      <div class="headerSection mb-3 d-flex flex-column flex-md-row justify-content-between">
+        <div class="input-group flex-nowrap mb-2 mb-md-0 me-0 me-md-2">
+          <span class="input-group-text yellow-background" id="addon-wrapping"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control search-bar" placeholder="Buscar comida..." [(ngModel)]="searchTerm" (input)="filterComidas()" />
+        </div>
+        <div class="d-flex flex-column flex-md-row mb-2 mb-md-0">
+          <button *ngIf="!showNoComidasAlert && !showNoDietaAlert" class="btn btn-secondary me-0 me-md-2 mb-2 mb-md-0" (click)="markAllCompletion()" style="width: 190px;"><i class="bi bi-check2-square text-light"></i> Marcar todas</button>
+          <button *ngIf="!showNoComidasAlert && !showNoDietaAlert" class="btn btn-warning" (click)="generatePDF()" style="width: 200px;"><i class="bi bi-download text-dark"></i> Descargar PDF</button>
+        </div>
+      </div>
+
+      <!-- Título con el día de hoy y el nombre del día de comidas -->
+      <div *ngIf="!showNoComidasAlert && !showNoDietaAlert" class="today-title mb-3">
+        <h5>{{ diaSemana }}, {{ fechaHoy }}: {{ nombreDia }}</h5>
+      </div>
+
+      <!-- Alerta de Bootstrap para cuando no hay comidas programadas -->
+      <div *ngIf="showNoComidasAlert">
+        <div class="alert alert-success" role="alert">
+          ¡Día libre! Parece ser que no tiene comidas programadas para hoy.
+        </div>
+        <div class="text-center">
+          <img src="https://media1.tenor.com/m/LjhaLjAdrQgAAAAC/winnie-the-pooh-hungry.gif" alt="Dia libre">
+        </div>
+      </div>
+
+      <!-- Alerta de Bootstrap para cuando no hay dieta activa -->
+      <div *ngIf="showNoDietaAlert">
+        <div class="alert alert-warning">
+          No hay una dieta activa en este momento.
+        </div>
+        <div class="text-center">
+          <img src="https://media1.tenor.com/m/CkzLJRjg4AcAAAAC/thinking-winnie-the-pooh.gif" alt="No dieta activa">
+        </div>
+      </div>
+
+      <div id="comidasHoy" class="row">
+        <div *ngFor="let comida of filteredComidas" class="col-12 col-md-6 col-lg-4 mb-3">
+          <div class="exercise-card h-100">
+            <div class="ejercicioChecker" (click)="toggleCompletion(comida)" [ngClass]="{'completed': comida.completado}">
+              <img [src]="comida.imagenUrl" class="card-img-top img-fluid" alt="Comida">
+              <div class="overlay">
+                <div class="textoOverlayHolder">
+                  <span class="textoOverlay">TERMINADA</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="exerciseInfo">
+                  <h5 class="card-title mb-1">{{ comida.nombre }}</h5>
+                  <span class="badge rounded-pill text-bg-warning mb-1" style="font-size:14px;">{{ comida.tipoComida }}</span>
+                  <hr>
+                  <p class="m-0 mt-1">{{ comida.descripcion }}</p>
+                </div>
+                <div class="row mt-2 mb-2">
+                  <div class="col">
+                    <div>Calorías</div>
+                    <div>{{ comida.calorias }} kcal</div>
+                  </div>
+                  <div class="col">
+                    <div>Cantidad</div>
+                    <div>{{ comida.cantidad }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

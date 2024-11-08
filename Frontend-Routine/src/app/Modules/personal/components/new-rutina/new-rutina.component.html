@@ -1,0 +1,145 @@
+<div class="base">
+  <div class="container">
+    <form [formGroup]="rutinaForm" (ngSubmit)="onSubmit()">
+      <!-- Datos generales de la rutina -->
+      <div class="row mb-3">
+        <div class="col-12 col-md-6 mb-3">
+          <label for="nombreRutina" class="form-label"><strong>Nombre</strong></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
+            <input type="text" class="form-control" id="nombreRutina" formControlName="nombreRutina" placeholder="Ingrese un nombre para tu rutina" maxlength="35">
+          </div>
+          <div *ngIf="rutinaForm.get('nombreRutina')?.invalid && rutinaForm.get('nombreRutina')?.touched" class="text-danger">
+            El nombre de la rutina es requerido.
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+          <label for="descripcion" class="form-label"><strong>Descripción</strong></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa-solid fa-bars-staggered"></i></span>
+            <input class="form-control" id="descripcion" formControlName="descripcion" style="max-height: 100px;" placeholder="Ingrese una descripción para tu rutina" maxlength="60">
+          </div>
+          <div *ngIf="rutinaForm.get('descripcion')?.invalid && rutinaForm.get('descripcion')?.touched" class="text-danger">
+            La descripción es requerida.
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE DÍAS -->
+      <div formArrayName="rutinaEjercicios">
+        <div *ngFor="let ejercicio of rutinaEjercicios.controls; let i = index" [formGroupName]="i" class="mb-3">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header d-flex justify-content-between align-items-center" [attr.id]="'heading' + i">
+                <button class="accordion-button" [class.collapsed]="i !== 0" type="button" data-bs-toggle="collapse"
+                  [attr.data-bs-target]="'#collapse' + i" [attr.aria-expanded]="i === 0" [attr.aria-controls]="'collapse' + i">
+                  Día {{ i + 1 }} - (Haga click para expandir/contraer el bloque)
+                </button>
+              </h2>
+              <div [attr.id]="'collapse' + i" class="accordion-collapse collapse" [class.show]="i === 0"
+                [attr.aria-labelledby]="'heading' + i" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="row mb-3">
+                    <div class="col-12 col-md-6 mb-3">
+                      <label for="dia{{i}}" class="form-label"><strong>Día de la semana</strong></label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                        <select class="form-select" [attr.id]="'dia' + i" formControlName="dia" (change)="updateDisabledOptions()">
+                          <option value>Seleccione un día de la semana</option>
+                          <option *ngFor="let day of days" [value]="day" [disabled]="isDaySelected(day)" [ngClass]="{'text-muted': isDaySelected(day)}">{{ day }}</option>
+                        </select>
+                      </div>
+                      <div *ngIf="ejercicio.get('dia')?.invalid && ejercicio.get('dia')?.touched" class="text-danger">
+                        El día es requerido.
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 mb-3">
+                      <label for="nombreDia{{i}}" class="form-label"><strong>Nombre del Día</strong> </label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa fa-utensils"></i></span>
+                        <input type="text" class="form-control" [attr.id]="'nombreDia' + i" formControlName="nombreDia" placeholder="Ej: Día de tren superior" maxlength="35">
+                      </div>
+                      <div *ngIf="ejercicio.get('nombreDia')?.invalid && ejercicio.get('nombreDia')?.touched" class="text-danger">
+                        El nombre del día es requerido.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- EJERCICIOS -->
+                  <div formArrayName="ejercicios">
+                    <div *ngFor="let ejercicioCtrl of getEjerciciosControls(i).controls; let j = index" [formGroupName]="j" class="mb-3">
+                      <div class="row ejercicioCont">
+                        <div class="col-12 col-md-6 mb-3">
+                          <label for="ejercicioId{{i}}{{j}}" class="form-label">Ejercicio</label>
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-dumbbell"></i></span>
+                            <select class="form-select" [attr.id]="'ejercicioId' + i + j" formControlName="ejercicioId">
+                              <option value>Seleccione un ejercicio</option>
+                              <option *ngFor="let ejercicio of ejercicios" [value]="ejercicio.id">{{ ejercicio.nombre }}</option>
+                            </select>
+                          </div>
+                          <div *ngIf="ejercicioCtrl.get('ejercicioId')?.invalid && ejercicioCtrl.get('ejercicioId')?.touched" class="text-danger">
+                            El ejercicio es requerido.
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                          <label for="repeticiones{{i}}{{j}}" class="form-label">Repeticiones</label>
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-repeat"></i></span>
+                            <input type="number" class="form-control" [attr.id]="'repeticiones' + i + j" formControlName="repeticiones" placeholder="Ej: 12" max="100">
+                          </div>
+                          <div *ngIf="ejercicioCtrl.get('repeticiones')?.invalid && ejercicioCtrl.get('repeticiones')?.touched" class="text-danger">
+                            Las repeticiones son requeridas.
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                          <label for="series{{i}}{{j}}" class="form-label">Series</label>
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-list-ol"></i></span>
+                            <input type="number" class="form-control" [attr.id]="'series' + i + j" formControlName="series" placeholder="Ej: 4" max="100">
+                          </div>
+                          <div *ngIf="ejercicioCtrl.get('series')?.invalid && ejercicioCtrl.get('series')?.touched" class="text-danger">
+                            Las series son requeridas.
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                          <label for="peso{{i}}{{j}}" class="form-label">Peso</label>
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-weight"></i></span>
+                            <input type="number" class="form-control" [attr.id]="'peso' + i + j" formControlName="peso" placeholder="Ej: 30" max="1000">
+                            <span class="input-group-text"><strong>Kg</strong></span>
+                          </div>
+                          <div *ngIf="ejercicioCtrl.get('peso')?.invalid && ejercicioCtrl.get('peso')?.touched" class="text-danger">
+                            El peso es requerido.
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <button type="button" class="btn btn-danger btn-sm ms-auto" (click)="removeEjercicio(i, j)">
+                            <i class="bi bi-trash-fill text-light"></i> Eliminar ejercicio
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-secondary btn-sm me-2" (click)="addEjercicio(i)">
+                    <i class="bi bi-plus-circle text-light"></i> Añadir Ejercicio
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm me-2" (click)="confirmRemoveRutinaEjercicio(i)">
+                    <i class="bi bi-trash-fill text-light"></i> Eliminar Día
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-secondary me-2" (click)="addRutinaEjercicio()" [disabled]="rutinaEjercicios.length >= 7">Añadir día</button>
+      <button type="submit" class="btn btn-warning" [disabled]="rutinaForm.invalid">Crear Rutina</button>
+    </form>
+  </div>
+</div>

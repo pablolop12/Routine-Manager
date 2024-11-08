@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <h2>{{ isEditMode ? 'Editar Ejercicio' : 'Crear Ejercicio' }}</h2>
+  <form [formGroup]="ejercicioForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" id="nombre" formControlName="nombre" class="form-control" placeholder="Nombre del ejercicio">
+    </div>
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Descripción del ejercicio"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="categoria" class="form-label">Categoría</label>
+      <select id="categoria" formControlName="categoria" class="form-control">
+        <option value="" disabled selected>Selecciona una categoría</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="imagenUrl" class="form-label">URL de la Imagen</label>
+      <input type="text" id="imagenUrl" formControlName="imagenUrl" class="form-control" placeholder="URL de la imagen del ejercicio">
+    </div>
+    <button type="submit" class="btn btn-warning">{{ isEditMode ? 'Actualizar Ejercicio' : 'Crear Ejercicio' }}</button>
+  </form>
+</div>

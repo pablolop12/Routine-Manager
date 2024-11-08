@@ -1,0 +1,64 @@
+<div class="container-fluid p-0">
+  <div class="hero-section ">
+    <!-- BLOQUE 1 PRINCIPAL NO LOGEADO -->
+    <div *ngIf="!isLoggedIn" class="container d-flex align-items-center justify-content-center pt-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <div>
+            <div class="text-center">
+              <h3 class="tituloHero mb-5">Consigue tus objetivos<br>
+                organizándote</h3>
+              <p class="pHero mb-5">
+                Organizador de rutinas de entrenamiento 📋<br>
+                Asistente de ejercicios diarios 📆<br>
+                Registro de Marcas personales 🎯<br>
+                Guarda tus comidas favoritas y crea dietas con ellas 🥪<br>
+              </p>
+              <button class="btn btn-secondary btn-lg mb-5 p-4"
+                style="font-size: 25px;" routerLink="/auth/register"><strong
+                  class="text-light">¡Únete ahora y empieza tu rutina!</strong>
+              </button><br>
+              <img class="img-fluid"
+                src="../../../../../assets/img/LogosAppStoreGooglePlay_W.png"
+                style="height: 60px;">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-3 mb-3">
+          <div class="bloqueDer">
+            <img class="img-fluid rounded"
+              src="../../../../../assets/img/bannerIndex.png">
+            <div class="pt-5">
+              <p class="text-center"
+                style="font-style: italic; font-size: 20px;">¡Organiza tu vida
+                de forma saludable!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 2 LOGEADO -->
+    <div *ngIf="isLoggedIn">
+      <div class="container pt-3">
+        <div class="row">
+          <div class="col justify-content-center aling-items-center d-flex">
+            <div class="bg-white rounded p-3 text-center w-50">
+              <h3>Te damos la bienvenida, {{user.name}}</h3>
+              Este es tu panel de usuario, navega entre las pestañas para empezar a organizar tu mundo fitness.
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-light text-white text-center py-3">
+    <div class="container">
+      <p class="mb-0">© 2024 FitPlanner. Todos los derechos reservados.</p>
+      <small>Diseñado por Pablo López Luján</small>
+    </div>
+  </footer>
+</div>

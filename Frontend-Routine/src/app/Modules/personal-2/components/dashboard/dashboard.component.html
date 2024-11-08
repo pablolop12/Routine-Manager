@@ -1,0 +1,41 @@
+<div class="base">
+  <div class="container pt-4">
+    <h3>Panel de nutrición</h3>
+    <div class="tabs-container">
+      <ul class="nav nav-tabs custom-tabs">
+        <li class="nav-item">
+          <a class="nav-link" (click)="selectTab('dashboard')" [class.active]="selectedTab === 'dashboard'">Comidas de hoy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="selectTab('dieta')" [class.active]="selectedTab === 'dieta'">Mis dietas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="selectTab('new-dieta')" [class.active]="selectedTab === 'new-dieta'">+ Crear dieta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link destacar me-1 ms-1" (click)="selectTab('comidas-list')" [class.active]="selectedTab === 'comidas-list'">Mis comidas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link destacar" (click)="selectTab('new-comida')" [class.active]="selectedTab === 'new-comida'">+ Crear comida</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div *ngIf="selectedTab === 'dashboard'">
+          <app-comidas-hoy></app-comidas-hoy>
+        </div>
+        <div *ngIf="selectedTab === 'dieta'">
+          <app-dieta-manager></app-dieta-manager>
+        </div>
+        <div *ngIf="selectedTab === 'new-dieta'">
+          <app-new-dieta></app-new-dieta>
+        </div>
+        <div *ngIf="selectedTab === 'comidas-list'">
+          <app-comidas-list></app-comidas-list>
+        </div>
+        <div *ngIf="selectedTab === 'new-comida'">
+          <app-form-comida></app-form-comida>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.base {
+  padding: 3vh;
+}
+
+.accordion-header button {
+  background-color: #ffcc00;
+  border: none;
+  outline: none;
+  font-weight: bold;
+
+  box-shadow: none; /* Quitar la sombra */
+}
+
+.accordion-header button:not(.collapsed) {
+  background-color: #ffcc00; /* Cambiar a rojo cuando esté expandido */
+  font-weight: bold;
+
+}
+
+.accordion-header button:focus {
+  box-shadow: none; /* Quitar la sombra cuando se hace clic */
+}
+
+
+.comidaCont {
+  background-color: #ffcc002b;
+  padding: 8px;
+}
+
+/* Estilo personalizado para manejar las validaciones de Bootstrap */
+.invalid-feedback,
+.valid-feedback {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding-left: 12px;
+  /* Añadir padding para alinear el texto con el input */
+}
+
+
+.buttonDel {
+  height: 38px;
+  width: 38px;
+}
+

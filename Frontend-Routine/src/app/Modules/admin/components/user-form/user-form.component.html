@@ -1,0 +1,28 @@
+<div class="container mt-3">
+    <h2>Editar Usuario</h2>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" id="name" formControlName="name" class="form-control" placeholder="Nombre">
+      </div>
+      <div class="mb-3">
+        <label for="lastname" class="form-label">Apellido</label>
+        <input type="text" id="lastname" formControlName="lastname" class="form-control" placeholder="Apellido">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email">
+      </div>
+      <div class="mb-3">
+        <label for="role" class="form-label">Rol</label>
+        <select id="role" formControlName="role" class="form-control">
+          <option value="" disabled selected>Selecciona un rol</option>
+          <option value="USER">Usuario</option>
+          <option value="EMPLEADO">Empleado</option>
+          <option value="ADMIN">Administrador</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning">{{ userId ? 'Actualizar Usuario' : 'Crear Usuario' }}</button>
+    </form>
+  </div>
+      

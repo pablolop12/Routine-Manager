@@ -1,0 +1,41 @@
+.base {
+  padding: 3vh;
+}
+
+.accordion-header button {
+  background-color: #ffcc00;
+  border: none;
+  outline: none;
+  font-weight: bold;
+
+  box-shadow: none; /* Quitar la sombra */
+}
+
+.accordion-header button:not(.collapsed) {
+  background-color: #ffcc00; /* Cambiar a rojo cuando esté expandido */
+  font-weight: bold;
+
+}
+
+.accordion-header button:focus {
+  box-shadow: none; /* Quitar la sombra cuando se hace clic */
+}
+
+.invalid-feedback,
+.valid-feedback {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding-left: 12px;
+}
+
+.buttonDel {
+  height: 38px;
+  width: 38px;
+}
+
+.comidaCont {
+  background-color: #ffcc002b;
+  padding: 8px;
+}

@@ -1,0 +1,124 @@
+<div class="base vh-100 d-flex justify-content-center align-items-center">
+  <!-- Logo en la parte superior izquierda de la pantalla -->
+  <a class="position-fixed top-0 start-0 p-3" routerLink="/">
+    <i class="bi bi-hexagon-half navLinksText d-none d-lg-inline text-white"
+      style="font-size: 50px; font-style: normal;"></i>
+  </a>
+  <!-- Formulario centrado -->
+  <div class="form-container w-75 w-md-50 w-lg-50 bg-white p-3 p-md-5">
+    <div class="divider d-flex align-items-center my-4">
+      <p class="text-center fw-bold mx-3 mb-0">Registro de usuario</p>
+    </div>
+    <form (ngSubmit)="register()" #registerForm="ngForm" novalidate>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i
+                class="bi bi-person-fill"></i></span>
+            <input type="text" class="form-control" placeholder="Nombre"
+              aria-label="Nombre" [(ngModel)]="user.name" name="name" required
+              maxlength="25" #name="ngModel"
+              [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+              class="invalid-feedback">
+              <div *ngIf="name.errors?.['required']" class="text-danger">Su nombre es requerido.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i
+                class="bi bi-person-fill"></i></span>
+            <input type="text" class="form-control" placeholder="Apellidos"
+              aria-label="Apellido" [(ngModel)]="user.lastname" name="lastname"
+              required maxlength="30" #lastname="ngModel"
+              [ngClass]="{ 'is-invalid': lastname.invalid && (lastname.dirty || lastname.touched) }">
+            <div
+              *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+              class="invalid-feedback">
+              <div *ngIf="lastname.errors?.['required']"class="text-danger">Sus apellidos son
+                requeridos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i
+            class="bi bi-envelope-fill"></i></span>
+        <input type="email" class="form-control"
+          placeholder="Correo electrónico" aria-label="Correo electrónico"
+          [(ngModel)]="user.email" name="email" required email maxlength="50"
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched) }">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="invalid-feedback">
+          <div *ngIf="email.errors?.['required']"class="text-danger">Correo electrónico es
+            requerido.</div>
+          <div *ngIf="email.errors?.['email']"class="text-danger">El formato del correo electrónico no es
+            válido.</div>
+          <div *ngIf="email.errors?.['maxlength']" class="text-danger">El correo electrónico no puede
+            tener más de 50 caracteres.</div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i
+            class="bi bi-shield-lock-fill"></i></span>
+        <input type="password" class="form-control" placeholder="Contraseña"
+          aria-label="Contraseña" [(ngModel)]="user.password" name="password"
+          required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': password.invalid && (password.dirty || password.touched) }">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="invalid-feedback">
+          <div *ngIf="password.errors?.['required']"class="text-danger">La contraseña es
+            requerida.</div>
+          <div *ngIf="password.errors?.['pattern']"class="text-danger">La contraseña debe tener al
+            menos 8 caracteres, una mayúscula, una minúscula, un número y un
+            carácter especial.</div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i
+            class="bi bi-shield-lock-fill"></i></span>
+        <input type="password" class="form-control"
+          placeholder="Confirmar Contraseña" aria-label="Confirmar Contraseña"
+          [(ngModel)]="user.confirmPassword" name="confirmPassword" required
+          #confirmPassword="ngModel"
+          [ngClass]="{ 'is-invalid': confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) }">
+        <div
+          *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+          class="invalid-feedback">
+          <div *ngIf="confirmPassword.errors?.['required']"class="text-danger">Confirmar contraseña
+            es requerido.</div>
+          <div
+            *ngIf="user.password !== user.confirmPassword && confirmPassword.dirty" class="text-danger">Las
+            contraseñas no coinciden.</div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i class="bi bi-phone-fill"></i></span>
+        <input type="text" class="form-control" placeholder="Teléfono móvil"
+          aria-label="Teléfono móvil" [(ngModel)]="user.movil" name="movil"
+          required pattern="^\d{9}$" #movil="ngModel"
+          [ngClass]="{ 'is-invalid': movil.invalid && (movil.dirty || movil.touched) }">
+        <div *ngIf="movil.invalid && (movil.dirty || movil.touched)"
+          class="invalid-feedback">
+          <div *ngIf="movil.errors?.['required']"class="text-danger">El teléfono móvil es
+            requerido.</div>
+          <div *ngIf="movil.errors?.['pattern']"class="text-danger">El teléfono móvil debe ser un
+            número de 9 dígitos.</div>
+        </div>
+      </div>
+      <button type="submit" class="buttonOwn w-100"
+        [disabled]="registerForm.invalid">Registrarse</button>
+      <p class="small fw-bold mt-2 pt-1 mb-0">¿Ya tienes una cuenta? <a
+          routerLink="/auth/login" class="link-warning">Inicia sesión
+          aquí</a></p>
+      <br>
+      <p class="small fw-bold mt-2 pt-1 mb-0"><a routerLink="/"
+          class="link-warning"><i
+            class="bi bi-caret-left-fill link-warning"></i> Volver a la página
+          de inicio</a></p>
+    </form>
+  </div>
+</div>

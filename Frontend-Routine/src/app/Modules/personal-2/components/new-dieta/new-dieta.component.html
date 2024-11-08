@@ -1,0 +1,136 @@
+<div class="base">
+  <div class="container">
+    <form [formGroup]="dietaForm" (ngSubmit)="onSubmit()">
+      <!-- Datos generales de la dieta -->
+      <div class="row">
+        <div class="mb-3 col-12 col-md-6">
+          <label for="nombreDieta" class="form-label"><strong>Nombre</strong></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
+            <input type="text" class="form-control" id="nombreDieta" formControlName="nombreDieta" maxlength="35" placeholder="Introduce un nombre para tu dieta">
+          </div>
+          <div *ngIf="dietaForm.get('nombreDieta')?.invalid && dietaForm.get('nombreDieta')?.touched" class="text-danger">
+            El nombre de la dieta es requerido.
+          </div>
+        </div>
+        <div class="mb-3 col-12 col-md-6">
+          <label for="descripcion" class="form-label"><strong>Descripción</strong></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa-solid fa-bars-staggered"></i></span>
+            <input type="text" class="form-control" id="descripcion" formControlName="descripcion" maxlength="65" placeholder="Introduce una descripción para tu dieta">
+          </div>
+          <div *ngIf="dietaForm.get('descripcion')?.invalid && dietaForm.get('descripcion')?.touched" class="text-danger">
+            La descripción es requerida.
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE DÍAS -->
+      <div formArrayName="dietaComidas">
+        <div *ngFor="let comida of dietaComidas.controls; let i = index" [formGroupName]="i" class="mb-3">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header d-flex justify-content-between align-items-center" [attr.id]="'heading' + i">
+                <button class="accordion-button" [class.collapsed]="i !== 0" type="button" data-bs-toggle="collapse"
+                  [attr.data-bs-target]="'#collapse' + i" [attr.aria-expanded]="i === 0" [attr.aria-controls]="'collapse' + i">
+                  Día {{ i + 1 }} - (Haga click para expandir/contraer el bloque)
+                </button>
+              </h2>
+              <div [attr.id]="'collapse' + i" class="accordion-collapse collapse" [class.show]="i === 0"
+                [attr.aria-labelledby]="'heading' + i" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="row">
+                    <div class="mb-3 col-12 col-md-6">
+                      <label for="dia{{i}}" class="form-label"><strong>Día de la semana</strong></label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                        <select class="form-select" [attr.id]="'dia' + i" formControlName="dia" (change)="updateDisabledOptions()">
+                          <option value>Seleccione un día</option>
+                          <option *ngFor="let day of days" [value]="day" [disabled]="isDaySelected(day)" [ngClass]="{'text-muted': isDaySelected(day)}">{{ day }}</option>
+                        </select>
+                      </div>
+                      <div *ngIf="comida.get('dia')?.invalid && comida.get('dia')?.touched" class="text-danger">
+                        El día es requerido.
+                      </div>
+                    </div>
+                    <div class="mb-3 col-12 col-md-6">
+                      <label for="nombreDia{{i}}" class="form-label"><strong>Nombre del día</strong></label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa fa-utensils"></i></span>
+                        <input type="text" class="form-control" [attr.id]="'nombreDia' + i" formControlName="nombreDia" placeholder="Ej: Día de déficit calórico" maxlength="35">
+                      </div>
+                      <div *ngIf="comida.get('nombreDia')?.invalid && comida.get('nombreDia')?.touched" class="text-danger">
+                        El nombre del día es requerido.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div formArrayName="comidas">
+                    <div *ngFor="let comidaCtrl of getComidasControls(i).controls; let j = index" [formGroupName]="j" class="mb-3">
+                      <div class="comidaCont">
+                        <div class="row">
+                          <div class="mb-3 col-12 col-md-4">
+                            <label for="tipoComida{{i}}{{j}}" class="form-label"><strong>Tipo de Comida</strong></label>
+                            <div class="input-group">
+                              <span class="input-group-text"><i class="fa fa-list-ol"></i></span>
+                              <select class="form-select" [attr.id]="'tipoComida' + i + j" formControlName="tipoComida" (change)="onTipoComidaChange(i, j)">
+                                <option value>Seleccione un tipo de comida</option>
+                                <option *ngFor="let tipo of tiposComida" [value]="tipo">{{ tipo }}</option>
+                              </select>
+                            </div>
+                            <div *ngIf="comidaCtrl.get('tipoComida')?.invalid && comidaCtrl.get('tipoComida')?.touched" class="text-danger">
+                              El tipo de comida es requerido.
+                            </div>
+                          </div>
+                          <div class="mb-3 col-12 col-md-4">
+                            <label for="comidaId{{i}}{{j}}" class="form-label"><strong>Comida</strong></label>
+                            <div class="input-group">
+                              <span class="input-group-text"><i class="fa fa-burger"></i></span>
+                              <select class="form-select" [attr.id]="'comidaId' + i + j" formControlName="comidaId" [disabled]="!comidaCtrl.get('tipoComida')?.value">
+                                <option value disabled>Seleccione una comida (Seleccionar tipo primero)</option>
+                                <option *ngIf="filteredComidas[j]?.length === 0" value disabled class="fst-italic">No tienes comidas de este tipo</option>
+                                <option *ngFor="let comida of filteredComidas[j]" [value]="comida.id">{{ comida.nombre }}</option>
+                              </select>
+                            </div>
+                            <div *ngIf="comidaCtrl.get('comidaId')?.invalid && comidaCtrl.get('comidaId')?.touched" class="text-danger">
+                              La comida es requerida.
+                            </div>
+                          </div>
+                          <div class="mb-3 col-12 col-md-4">
+                            <label for="cantidad{{i}}{{j}}" class="form-label"><strong>Cantidad</strong></label>
+                            <div class="input-group">
+                              <span class="input-group-text"><i class="fa fa-weight"></i></span>
+                              <input type="number" class="form-control" [attr.id]="'cantidad' + i + j" formControlName="cantidad" placeholder="Ej: 650">
+                              <span class="input-group-text"><strong>gr</strong></span>
+                            </div>
+                            <div *ngIf="comidaCtrl.get('cantidad')?.invalid && comidaCtrl.get('cantidad')?.touched" class="text-danger">
+                              La cantidad es requerida.
+                            </div>
+                          </div>
+                          <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-danger btn-sm ms-auto" (click)="removeComida(i, j)">
+                              <i class="bi bi-trash-fill text-light"></i> Eliminar comida
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-secondary btn-sm me-2" (click)="addComida(i)">
+                    <i class="bi bi-plus-circle text-light"></i> Añadir Comida
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm me-2" (click)="confirmRemoveDietaComida(i)">
+                    <i class="bi bi-trash-fill text-light"></i> Eliminar Día
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-secondary me-2" (click)="addDietaComida()" [disabled]="dietaComidas.length >= 7">Añadir día</button>
+      <button type="submit" class="btn btn-warning" [disabled]="dietaForm.invalid">Crear Dieta</button>
+    </form>
+  </div>
+</div>

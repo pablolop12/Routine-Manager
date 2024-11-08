@@ -1,0 +1,30 @@
+.base {
+  padding: 3vh;
+
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+h2 {
+  margin-bottom: 2vh;
+}
+
+.btn-success {
+  background-color: #ffcc00;
+  border: none;
+  font-weight: bold;
+  color: #222e39;
+  transition: ease 0.3s, box-shadow 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #fdd94b;
+  transform: translateY(-1px);
+  /* Levantar el botón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059);
+  /* Añadir sombra leve */
+}
+

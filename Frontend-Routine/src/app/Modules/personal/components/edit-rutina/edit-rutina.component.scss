@@ -1,0 +1,24 @@
+.accordion-header button {
+  background-color: #ffcc00;
+  border: none;
+  outline: none;
+  font-weight: bold;
+
+  box-shadow: none; /* Quitar la sombra */
+}
+
+.accordion-header button:not(.collapsed) {
+  background-color: #ffcc00; /* Cambiar a rojo cuando esté expandido */
+  font-weight: bold;
+
+}
+
+.accordion-header button:focus {
+  box-shadow: none; /* Quitar la sombra cuando se hace clic */
+}
+
+
+.ejercicioCont {
+  background-color: #ffcc002b;
+  padding: 5px;
+}

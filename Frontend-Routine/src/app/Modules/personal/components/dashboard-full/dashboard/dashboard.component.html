@@ -1,0 +1,29 @@
+<div class="base">
+  <div class="container pt-4">
+    <h3>Panel de entrenamiento</h3>
+    <div class="tabs-container">
+      <ul class="nav nav-tabs custom-tabs">
+        <li class="nav-item">
+          <a class="nav-link"  (click)="selectTab('dashboard')" [class.active]="selectedTab === 'dashboard'">Entrenamiento de hoy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  (click)="selectTab('rutina')" [class.active]="selectedTab === 'rutina'">Mis rutinas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  (click)="selectTab('new-rutina')" [class.active]="selectedTab === 'new-rutina'">+ Crear rutina</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div *ngIf="selectedTab === 'dashboard'">
+          <app-entrenamiento-hoy></app-entrenamiento-hoy>
+        </div>
+        <div *ngIf="selectedTab === 'rutina'">
+          <app-rutina-manager></app-rutina-manager>
+        </div>
+        <div *ngIf="selectedTab === 'new-rutina'">
+          <app-new-rutina></app-new-rutina>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

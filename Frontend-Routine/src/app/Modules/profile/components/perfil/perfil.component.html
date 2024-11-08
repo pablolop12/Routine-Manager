@@ -1,0 +1,32 @@
+<div class="base">
+    <div class="container mt-5 p-5">
+        <div class="card ">
+          <div class="card-body">
+            <h3 class="card-title">Perfil de Usuario</h3>
+            <div *ngIf="user">
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <p id="nombre" class="form-control">{{ user.name }}</p>
+              </div>
+              <div class="mb-3">
+                <label for="apellidos" class="form-label">Apellidos:</label>
+                <p id="apellidos" class="form-control">{{ user.lastname }}</p>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <p id="email" class="form-control">{{ user.email }}</p>
+              </div>
+              <div class="mb-3">
+                <label for="rol" class="form-label">Rol:</label>
+                <p id="rol" class="form-control">{{ user.role }}</p>
+              </div>
+              <!-- Puedes añadir más campos según sea necesario -->
+            </div>
+            <div *ngIf="!user">
+              <p class="text-center">Cargando datos del usuario...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

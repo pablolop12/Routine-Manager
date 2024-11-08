@@ -1,0 +1,60 @@
+<div class="base">
+  <div class="container mt-4">
+    <h2>Lista de Usuarios</h2>
+
+    <!-- Encabezado Búsqueda/Filtro/Descargar -->
+    <div class="headerSection mb-3 d-flex flex-column flex-md-row w-100">
+      <div class="input-group flex-nowrap mb-2 mb-md-0 me-0 me-md-2"
+        style="flex: 1;">
+        <span class="input-group-text yellow-background" id="addon-wrapping"><i
+            class="bi bi-search"></i></span>
+        <input type="text" class="form-control search-bar"
+          placeholder="Buscar un usuario..." [(ngModel)]="searchTerm"
+          (input)="filterUsers()" />
+      </div>
+
+      <div class="d-flex flex-column flex-md-row mb-3 mb-md-0">
+        <div class="input-group mb-2 mb-md-0">
+          <select class="form-select" [(ngModel)]="selectedRole">
+            <option value>Selecciona un rol</option>
+            <option *ngFor="let role of roles" [value]="role">{{ role
+              }}</option>
+            <option value="todo">Todos</option>
+          </select>
+          <button class="btn btn-warning"
+            (click)="filterUsers()">Aplicar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped custom-table">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>EMAIL</th>
+            <th>PERMISOS</th>
+            <th class="text-center">ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filteredUsers">
+            <td>{{ user.name }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td class="text-center">
+              <a *ngIf="user.id !== 1" class="btn btn-warning me-2"
+                [routerLink]="['/admin/users/edit', user.id]">Editar</a>
+              <button *ngIf="user.id !== 1" class="btn btn-danger"
+                (click)="confirmDelete(user)">Eliminar</button>
+              <span class="text-secondary" *ngIf="user.id == 1"
+                style="font-style: italic;">Super administrador</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

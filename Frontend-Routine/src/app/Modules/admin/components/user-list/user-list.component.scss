@@ -1,0 +1,34 @@
+.base{
+  height: 100vh;
+  padding-top: 2vh;
+}
+
+.yellow-background {
+  background-color:#ffcc00;
+}
+
+
+
+.custom-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.custom-table th, .custom-table td {
+  border: none;
+}
+
+.custom-table thead th {
+  background-color: #fdd94b !important;
+  color: #222e39;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.custom-table tbody td {
+  background-color: #eeeeee !important;
+
+}

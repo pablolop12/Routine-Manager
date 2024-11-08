@@ -1,0 +1,163 @@
+.base {
+  padding: 3vh;
+}
+
+.rutinaCard{
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(128, 128, 128, 0.327);
+  padding: 3vh;
+  position: relative;
+  padding-bottom: 50px; /* Espacio suficiente para el botón */
+}
+
+//ACORDION
+.accordion-item,
+.accordion-button,
+.accordion-button:not(.collapsed),
+.accordion-button:focus,
+.accordion-collapse {
+  border-radius: 0 !important;
+}
+.accordion-button {
+  border-radius: 0;
+}
+
+.accordion-item {
+  border-radius: 0;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--bs-warning);
+  color: var(--bs-dark);
+  border-radius: 0;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  background-color: var(--bs-warning);
+  border-radius: 0;
+}
+
+.accordion-body {
+  border-top: 1px solid var(--bs-border-color);
+  border-radius: 0;
+}
+
+
+//
+.buttonActivate{
+  background-color: #ffcc00;
+  padding-inline: 30px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: none;
+  font-weight: bold;
+  color: #222e39;
+  transition: ease 0.3s, box-shadow 0.3s ease;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.buttonActivate:hover{
+  background-color: #fdd94b;
+  padding-inline: 30px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: none;
+  font-weight: bold;
+  color: #222e39;
+  transform: translateY(-1px); /* Levantar el botón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
+}
+
+.buttonPage{
+  background-color: #ffcc00;
+  padding-inline: 13px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: none;
+  font-weight: bold;
+  color: #222e39;
+  transition: ease 0.3s, box-shadow 0.3s ease;
+}
+.buttonPage:hover{
+  background-color: #fdd94b;
+  padding-inline: 30px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: none;
+  font-weight: bold;
+  color: #222e39;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
+}
+
+.botonDelete {
+    display: inline-block;
+    background-color: #e03444;
+    height: 30px;
+    width: 30px;
+    padding: 4px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .botonDelete:hover {
+    background-color: #c50e20 ;
+  }
+
+  .botonEdit {
+    display: inline-block;
+    background-color: #157347;
+    height: 30px;
+    width: 30px;
+    padding: 4px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .botonEdit:hover {
+    background-color: #2f9867 ;
+  }
+  
+  .circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .circle.active {
+    background-color: green;
+  }
+  
+  .circle.inactive {
+    background-color: red;
+  }
+
+  .cardActive {
+    animation: bounce 3s infinite;
+    border: #ffcc00 3px solid;
+    
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    10%, 30% {
+      transform: translateY(-10px);
+    }
+    40% {
+      transform: translateY(0);
+    }
+    60% {
+      transform: translateY(0px);
+    }
+    70%, 90% {
+      transform: translateY(0);
+    }
+  }

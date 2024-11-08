@@ -1,0 +1,1 @@
+2024-06-02T13:07:38.166+02:00  WARN 22400 --- [tfg-gimnasio] [HikariPool-27 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-27 - Thread starvation or clock leap detected (housekeeper delta=18h23m9s104ms536µs700ns).

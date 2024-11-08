@@ -1,0 +1,222 @@
+.navbarOwn {
+    height: 72px;
+    padding-inline: 2vh;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.277);
+}
+
+i {
+    font-size: 20px;
+}
+
+.imgNav{
+    height: 25px;
+}
+
+.navLinksText {
+    font-weight: bold;
+    color: #222e39;
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+.navLinksText:hover {
+    color: #ffb303; /* Color amarillo en hover */
+}
+
+.navLinksTextWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.navLinksTextWrapper .navLinksText {
+    font-weight: bold;
+    color: #222e39;
+    transition: ease 0.3s;
+}
+
+.navLinksTextWrapper:hover .navLinksText {
+    color: #ffb303; /* Color amarillo en hover */
+}
+
+
+.buttonRegister {
+    background-color: #ffcc00;
+    padding-inline: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    font-weight: bold;
+    color: #222e39;
+    transition: ease 0.3s, box-shadow 0.3s ease;
+}
+
+.buttonRegister:hover {
+    background-color: #fdd94b;
+    padding-inline: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    font-weight: bold;
+    color: #222e39;
+    transform: translateY(-1px); /* Levantar el botón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
+
+}
+
+.buttonLogout {
+    background-color: #ff5100;
+    padding-inline: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    transition: ease 0.3s, box-shadow 0.3s ease;
+}
+
+.buttonLogout:hover {
+    background-color: #e64901;
+    padding-inline: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    transform: translateY(-1px); /* Levantar el botón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
+
+}
+
+.login-hover{
+    text-decoration: none;
+
+
+}
+
+.hoverIt{
+    transition: color 0.3s ease;
+}
+.hoverIt :hover{
+    color: #ffb303; /* Cambiar el color a amarillo en hover */
+}
+
+.login-hover:hover i, 
+.login-hover:hover span {
+    color: #ffb303; /* Cambiar el color a amarillo en hover */
+    transition: color 0.3s ease;
+}
+
+
+
+
+
+.navbar-toggler {
+    height: 72px;
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 991.98px) {
+    .navbarOwn {
+        height: auto;
+    }
+
+    .navbar-collapse {
+
+        text-align: center;
+    }
+
+    .buttonRegister {
+        margin: 0 auto;
+    }
+
+    .d-lg-none {
+        display: block !important;
+    }
+
+    .d-lg-flex {
+        display: none !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .d-lg-none {
+        display: none !important;
+    }
+
+    .d-lg-flex {
+        display: flex !important;
+    }
+}
+
+/* Estilos del botón desplegar personalizado */
+.custom-toggler {
+    border: none;
+    background: transparent;
+    position: relative;
+    width: 30px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.custom-toggler .icon-bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    /* Grueso de las líneas */
+    background-color: #222e39;
+    margin: 4px 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Animaciones para la transformación en X */
+.custom-toggler[aria-expanded="true"] .icon-bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 4px;
+}
+
+.custom-toggler[aria-expanded="true"] .icon-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.custom-toggler[aria-expanded="true"] .icon-bar:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 10px;
+}
+
+.custom-toggler[aria-expanded="false"] .icon-bar:nth-child(1) {
+    transform: rotate(0deg);
+    top: 0;
+}
+
+.custom-toggler[aria-expanded="false"] .icon-bar:nth-child(2) {
+    opacity: 1;
+}
+
+.custom-toggler[aria-expanded="false"] .icon-bar:nth-child(3) {
+    transform: rotate(0deg);
+    bottom: 0;
+}
+
+/* Estilos para transparencia y blur de la barra */
+.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.819);
+    backdrop-filter: blur(5px);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.277);
+}
+

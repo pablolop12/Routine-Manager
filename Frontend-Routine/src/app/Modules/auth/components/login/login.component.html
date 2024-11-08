@@ -1,0 +1,54 @@
+<div class="base container-fluid h-100">
+    <!-- Logo en la parte superior izquierda de la pantalla -->
+    <a class="position-fixed top-0 start-0 p-3" routerLink="/">
+        <i class="bi bi-hexagon-half navLinksText d-none d-lg-inline text-white"
+            style="font-size: 50px; font-style: normal;"></i>
+    </a>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <!-- IZQUIERDA -->
+        <div class="col-lg-6 d-none d-lg-block position-relative">
+            <!-- Texto centrado -->
+            <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                <span class="text-center text-white fw-bold display-1">
+                    <h1 class="oc p-0 m-0 text-hover">ORGANIZA</h1>
+                    <h1 class="oc text-hover">TU</h1>
+                    <h1 class="oc p-0 m-0 text-hover">CAMBIO</h1>
+                </span>
+            </div>
+        </div>
+
+        <!-- DERECHA -->
+        <div class="col-lg-6 d-flex align-items-center bg-white vh-100">
+            <div class="containerRight w-100">
+                <form class="mx-auto" style="max-width: 400px;" (ngSubmit)="onSubmit()">
+                    <div class="divider d-flex align-items-center my-4">
+                        <p class="text-center fw-bold mx-3 mb-0">Inicio de sesión</p>
+                    </div>
+
+                    <!-- Email input group -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-at"></i></span>
+                        <input type="email" class="form-control" placeholder="Introduce tu email ..." aria-label="email" aria-describedby="basic-addon1" [(ngModel)]="credentials.email" name="email" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
+                        <input type="password" class="form-control" placeholder="Introduce tu contraseña ..." aria-label="password" aria-describedby="basic-addon1" [(ngModel)]="credentials.password" name="password" required>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <a class="text-body" (click)="forgot()">¿Has olvidado tu contraseña?</a>
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="buttonOwn w-100">INICIAR SESIÓN</button>
+
+                        <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes una cuenta? <a routerLink="/auth/register" class="link-warning">Regístrate aquí</a></p>
+
+                        <br>
+                        <p class="small fw-bold mt-2 pt-1 mb-0"><a routerLink="/" class="link-warning"><i class="bi bi-caret-left-fill link-warning"></i>Volver a la página de inicio</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

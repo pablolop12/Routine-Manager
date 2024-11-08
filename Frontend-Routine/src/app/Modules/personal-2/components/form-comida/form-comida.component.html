@@ -1,0 +1,70 @@
+<div class="base">
+
+  <h2 *ngIf="isEditMode">Editar Comida</h2>
+  <h2 *ngIf="!isEditMode">Crear Comida</h2>
+
+  <form [formGroup]="comidaForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="tipoComida" class="form-label">Tipo de Comida</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
+        <select class="form-select" id="tipoComida" formControlName="tipoComida">
+          <option value="" disabled>Seleccione un tipo de comida</option>
+          <option value="Desayuno">Desayuno</option>
+          <option value="Media Mañana">Media Mañana</option>
+          <option value="Comida">Comida</option>
+          <option value="Merienda">Merienda</option>
+          <option value="Cena">Cena</option>
+        </select>
+      </div>
+      <div *ngIf="comidaForm.get('tipoComida')?.invalid && comidaForm.get('tipoComida')?.touched" class="text-danger">
+        El tipo de comida es requerido.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre" maxlength="35" placeholder="Introduce un nombre para la comida">
+      </div>
+      <div *ngIf="comidaForm.get('nombre')?.invalid && comidaForm.get('nombre')?.touched" class="text-danger">
+        El nombre es requerido.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
+        <input type="text" class="form-control" id="descripcion" formControlName="descripcion" placeholder="Introduce una descripción para la comida" maxlength="65">
+      </div>
+      <div *ngIf="comidaForm.get('descripcion')?.invalid && comidaForm.get('descripcion')?.touched" class="text-danger">
+        La descripción es requerida.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mb-3 col-12 col-md-4">
+        <label for="calorias" class="form-label">Calorías</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
+          <input type="number" class="form-control" id="calorias" formControlName="calorias" placeholder="Ej: 730">
+          <span class="input-group-text"><strong>Kcal</strong></span>
+        </div>
+        <div *ngIf="comidaForm.get('calorias')?.invalid && comidaForm.get('calorias')?.touched" class="text-danger">
+          Las calorías son requeridas.
+        </div>
+      </div>
+
+      <div class="mb-3 col-12 col-md-8">
+        <label for="imagenUrl" class="form-label">URL de la Imagen</label>
+        <input type="text" class="form-control" id="imagenUrl" formControlName="imagenUrl" placeholder="Introduce la URL de una imagen">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="comidaForm.invalid">
+      {{ isEditMode ? 'Actualizar Comida' : 'Crear Comida' }}
+    </button>
+  </form>
+</div>

@@ -1,0 +1,110 @@
+.base{
+    height: 100vh;
+    background-color: #ffcc00;
+}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+
+.highlight {
+    font-size: 6rem; /* Ajusta el tamaño del texto para "TU" */
+    color: white;
+}
+
+.text-hover {
+    font-weight: 900;
+    transition: transform 0.3s, text-shadow 0.3s;
+
+}
+
+.oc{
+    font-size: 120px;
+}
+
+.text-hover:hover {
+    transform: translateY(-5px); /* Subir el texto unos pixeles */
+    text-shadow: 1px 3px 4px rgba(0,0,0,0.2);
+}
+
+
+
+.base{
+    height: 100vh;
+}
+
+.containerRight{
+    background-color: white;
+}
+
+
+.buttonOwn{
+    background-color: #ffcc00;
+    padding-inline: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    font-weight: bold;
+    color: #222e39;
+    transition: ease 0.3s, box-shadow 0.3s ease;
+}
+
+.buttonOwn:hover{
+    background-color: #fcd22a;
+    padding-inline: 30px;
+    transform: translateY(-1px); /* Levantar el botón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
+}
+
+.buttonGoogle{
+    background-color: rgb(244, 242, 242);
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+
+/* INPUT GROUP COSAS */
+.input-group-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffcc00 !important; /* Fondo amarillo para el icono */
+    border: none; /* Sin borde */
+    font-size: x-large;
+    
+}
+
+.input-group .form-control {
+    border: none; /* Quitar el borde de los inputs */
+    background-color: #e0e0e0; /* Fondo gris oscuro para los inputs */
+    color: #333; /* Texto de color oscuro */
+    box-shadow: none; /* Eliminar sombra */
+}
+
+.input-group .form-control::placeholder {
+    color: #666; /* Color del placeholder */
+}
+
+/* Modificar el borde al enfocar (focus) y aplicarlo al input-group */
+.input-group:focus-within {
+    outline: none; /* Eliminar el borde por defecto */
+    box-shadow: 0 0 0 2px #ffcc00; /* Añadir un borde fino de color amarillo */
+    border-radius: 8px; /* Añadir esquinas redondeadas */
+    transition: ease 0.3s;
+}
