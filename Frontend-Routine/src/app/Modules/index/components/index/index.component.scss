@@ -1,28 +1,32 @@
 .hero-section {
     background-color: #ffcc00;
     min-height: calc(100vh - 72px);
+    overflow-x: hidden;
+    background-image: url('data:image/svg+xml;utf8,<svg id="patternId" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="a" patternUnits="userSpaceOnUse" width="69.141" height="40" patternTransform="scale(6) rotate(0)"><rect x="0" y="0" width="100%" height="100%" fill="#ffffffff"/><path d="M69.212 40H46.118L34.57 20 46.118 0h23.094l11.547 20zM57.665 60H34.57L23.023 40 34.57 20h23.095l11.547 20zm0-40H34.57L23.023 0 34.57-20h23.095L69.212 0zM34.57 60H11.476L-.07 40l11.547-20h23.095l11.547 20zm0-40H11.476L-.07 0l11.547-20h23.095L46.118 0zM23.023 40H-.07l-11.547-20L-.07 0h23.094L34.57 20z" stroke-width="1" stroke="#836e02ff" fill="none"/></pattern></defs><rect width="800%" height="800%" transform="translate(0,0)" fill="url(#a)"/></svg>');
+    background-repeat: repeat;
 }
 
+
 .contenido {
-    padding: 20px;
     min-height: calc(100vh - 136px);
 }
 
 .row{
-    min-height: calc(100vh - 180px);
+
 
 }
 
 
 .leftContent{
-    background-color: white;
-    padding: 15px;
+
+    padding: 25px;
     border-radius: 5px;
+    min-height: calc(100vh - 136px);
     
     
 
     h1{
-        font-size: 60px;
+        font-size: 80px;
         font-weight: 900;
         color: #222e39;
     }
@@ -32,38 +36,76 @@
         font-size: 18px;
     }
 
-    
-
-    .buttonRegister {
-        cursor: pointer;
-        font-size: 20px;
+    .registro {
+        padding: 10px 25px;
         text-decoration: none;
-        background-color: #ffcc00;
-        padding-inline: 30px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        border: none;
-        font-weight: bold;
-        color: #222e39;
-        transition: ease 0.3s, box-shadow 0.3s ease;
+        border-radius: 50px;
+        background-color: #131313;
+        color: white;
+        border: black 1px solid;
+        display: inline-flex;
+        align-items: center;
+        position: relative; 
+        padding-right: 45px; 
+        transition: all 0.3s ease; 
 
         i{
-            font-size: 18px;
+            color: white;
+        }
+    
+        .flecha {
+            transition: transform 0.3s ease; 
+
+            position: absolute; 
+            right: 20px; 
+        }
+    }
+
+    .registro2 {
+        padding: 10px 25px;
+        text-decoration: none;
+        border-radius: 50px;
+        background-color: #ffffff;
+        color: black;   
+        display: inline-flex;
+        align-items: center;
+        position: relative; 
+        padding-right: 45px; 
+        transition: all 0.3s ease; 
+
+        i{
+            color: black;
+        }
+    
+        .flecha {
+            transition: transform 0.3s ease; 
+
+            position: absolute; 
+            right: 20px; 
         }
     }
     
-    .buttonRegister:hover {
-        background-color: #fdd94b;
-        padding-inline: 30px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        border: none;
-        font-weight: bold;
-        color: #222e39;
-        transform: translateY(-1px); /* Levantar el botón */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
-    
+    .registro:hover {
+        background-color: #1d1d1d;
     }
+    
+    .registro:hover .flecha {
+        transform: translateX(7px); 
+    }
+
+    .registro2:hover {
+        background-color: #fff6d8;
+    }
+    
+    .registro2:hover .flecha {
+        transform: translateX(7px); 
+    }
+    
+    .sesion {
+        color: #000000a5;
+        cursor: pointer;
+    }
+
 
 
 }
@@ -77,39 +119,9 @@
     align-items: center;
 
     img{
-        max-height: 400px;
-    }
-
-    .buttonRegister {
-        cursor: pointer;
-        font-size: 20px;
-        text-decoration: none;
-        background-color: #ffffff;
-        padding-inline: 30px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        border: none;
-        font-weight: bold;
-        color: #222e39;
-        transition: ease 0.3s, box-shadow 0.3s ease;
-
-        i{
-            font-size: 18px;
-        }
+        max-height: 300px;
     }
     
-    .buttonRegister:hover {
-        background-color: #e2e2e2;
-        padding-inline: 30px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        border: none;
-        font-weight: bold;
-        color: #222e39;
-        transform: translateY(-1px); /* Levantar el botón */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
-    
-    }
 }
 
 
@@ -117,7 +129,7 @@
 
 
 .footerHolder{
-    background-color: white;
+    background-color: white;    
 }
 
 footer {

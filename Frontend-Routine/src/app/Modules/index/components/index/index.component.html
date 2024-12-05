@@ -1,89 +1,132 @@
 <div class="container-fluid p-0">
-  <div class="hero-section ">
+  <div class="hero-section">
     <!-- BLOQUE 1 PRINCIPAL NO LOGEADO -->
-    <div *ngIf="!isLoggedIn" class="mt-auto">
+    <div *ngIf="!isLoggedIn">
       <div class="contenido">
-        <div class="row ">
-          <div class="col-lg-4 ">
-            <div class="leftContent text-center mb-3" style="min-height: 70%;">
-              <h1>Logra tus objetivos <br> organizándote</h1>
-              <p class="mb-5 mt-4">
-                Organizador de rutinas de entrenamiento 📋<br>
-                Asistente de ejercicios diarios 📆<br>
-                Registro de Marcas personales 🎯<br>
-                Guarda tus comidas favoritas y crea dietas con ellas 🥪
-              </p>
-              <a class="buttonRegister "><i class="fa-solid fa-user"></i> Unete ahora y empieza tu rutina</a>
-              <br>
-              <img class="img-fluid mt-5" src="../../../../../assets/img/LogosAppStoreGooglePlay_W.png"
-                style="height: 60px;">
-            </div>
 
-            <div class="leftContent mb-5" style="min-height: 28.5%;">
-              <i class="fa-solid fa-circle-info me-1"></i> Cuentas de prueba con diferentes roles<br><br>
-              Administrador:
-              <br><br>
-              Empleado:
-              <br><br>
-              Usuario:
+
+
+        <div class="row">
+          <div class="col-lg-6 ">
+            <div class="leftContent d-flex align-items-center justify-content-center text-center">
+              <div>
+                <h1 class="display-5 tex-center">Logra tus objetivos<br> organizándote</h1>
+                <div class="botonera d-flex align-items-center justify-content-center mt-4">
+                  <a class="shadow boton registro d-flex align-items-center me-2" routerLink="/auth/register">
+                    <i class="fa-regular fa-user" style="margin-inline-end: 10px;"></i>Regístrate ahora
+                    <i class="bi bi-chevron-right flecha"></i>
+                  </a>
+                  <a class="shadow boton registro2 d-flex align-items-center" routerLink="/auth/login">
+                    <i class="fa-regular fa-user" style="margin-inline-end: 10px;"></i>Inicia sesión ahora
+                    <i class="bi bi-chevron-right flecha"></i>
+                  </a>
+                  
+
+                </div>
+                <div class="text-center mt-5 mb-2">
+                  <img class="img-fluid mt-5" src="../../../../../assets/img/LogosAppStoreGooglePlay_W.png"
+                    style="height: 60px;">
+                </div>
+                <a class=" text-dark">Aplicacion móvil no disponible</a>
+
+
+              </div>
+
             </div>
           </div>
-          <div class="col-lg-8">
-            <div class="rightContent  d-flex justify-content-center" style="min-height: 100%;">
-              <div>
-                <div class="d-flex align-items-center">
-                  <div class="me-2">
-                    <h1 class="text-center">Sumate a la organanización saludable ahora</h1>
-                    <p class="mb-4">Diseña tu propia rutina de entrenamiento y plan de comidas personalizado. Nuestra
-                      plataforma te recuerda diariamente los ejercicios y comidas que debes hacer, y te permite
-                      registrar tu progreso en el gimnasio. Lleva un control detallado de tus marcas personales, pesos y
-                      repeticiones. ¡Convierte tus objetivos en realidad!</p>
 
-                    <div class="text-center">
-                      <a class="buttonRegister"><i class="fa-solid fa-user"></i> ¿Eres usuario? Inicia sesión</a>
-                    </div>
+          <div class="col-lg-6 m-0 p-0">
+            <div class="leftContent d-flex align-items-center justify-content-center">
+              <div class="w-75">
+                <img class="img-fluid rounded" src="../../../../../assets/img/bannerIndex.png">
+                <p class="mb-4 text-center">
+                  Organiza tus rutinas de entrenamiento, registra tus marcas personales, sigue tus ejercicios diarios y
+                  diseña
+                  dietas personalizadas con tus comidas favoritas. ¡Todo en un solo lugar!
+                </p>
 
-                  </div>
-                  <img class="img-fluid rounded" src="../../../../../assets/img/bannerIndex.png">
-                </div>
-
-                <div class="mt-4">
- 
-                </div>
               </div>
             </div>
           </div>
         </div>
+
+
+
+
+
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <!-- FOOTER -->
-      <div class="footerHolder mt-5  mt-lg-0">
-        <footer class="d-flex justify-content-between">
-          <a href="https://github.com/pablolop12" target="_blank" aria-label="Enlace a mi GitHub" class="navLink"><i
-              class="bi bi-fire me-1 icon"></i>Hecho por Pablo López L. </a>
+      <div class="footerHolder mt-5 mt-lg-0">
+        <footer class="d-flex flex-column flex-md-row justify-content-between text-center text-md-start">
+          <a href="https://github.com/pablolop12" target="_blank" aria-label="Enlace a mi GitHub"
+            class="navLink mb-2 mb-md-0"><i class="bi bi-fire me-1 icon"></i>Hecho por Pablo López L.</a>
           <a href="https://github.com/pablolop12/Routine-Manager" target="_blank" aria-label="Enlace al código fuente"
             class="navLink">Código fuente</a>
         </footer>
       </div>
     </div>
 
-
-
-
-
-
-
-
-
-
     <!-- BLOQUE 2 LOGEADO -->
     <div *ngIf="isLoggedIn">
       <div class="contenido">
         <div class="container pt-3">
-          <div class="row">
-            <div class="col justify-content-center aling-items-center d-flex">
-              <div class="bg-white rounded p-3 text-center w-50">
-                <h3>Te damos la bienvenida, {{user.name}}</h3>
-                Este es tu panel de usuario, navega entre las pestañas para empezar a organizar tu mundo fitness.
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+              <div class="bg-white rounded p-3 text-center">
+                <h3 class="fs-4 fs-md-3">Te damos la bienvenida, {{user.name}}</h3>
+                <p>Este es tu panel de usuario, navega entre las pestañas para empezar a organizar tu mundo fitness.</p>
               </div>
             </div>
           </div>
@@ -92,19 +135,13 @@
 
       <!-- FOOTER -->
       <div class="footerHolder">
-        <footer class="d-flex justify-content-between mb-3">
-          <a href="https://github.com/pablolop12" target="_blank" aria-label="Enlace a mi GitHub" class="navLink"><i
-              class="bi bi-fire me-1 icon"></i>Hecho por Pablo López L. </a>
+        <footer class="d-flex flex-column flex-md-row justify-content-between text-center text-md-start mb-3">
+          <a href="https://github.com/pablolop12" target="_blank" aria-label="Enlace a mi GitHub"
+            class="navLink mb-2 mb-md-0"><i class="bi bi-fire me-1 icon"></i>Hecho por Pablo López L.</a>
           <a href="https://github.com/pablolop12/Routine-Manager" target="_blank" aria-label="Enlace al código fuente"
             class="navLink">Código fuente</a>
         </footer>
       </div>
     </div>
   </div>
-
-
-
-
-
-
 </div>
