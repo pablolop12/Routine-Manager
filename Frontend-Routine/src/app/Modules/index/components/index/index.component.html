@@ -1,64 +1,110 @@
 <div class="container-fluid p-0">
   <div class="hero-section ">
     <!-- BLOQUE 1 PRINCIPAL NO LOGEADO -->
-    <div *ngIf="!isLoggedIn" class="container d-flex align-items-center justify-content-center pt-5">
-      <div class="row">
-        <div class="col-lg-6">
-          <div>
-            <div class="text-center">
-              <h3 class="tituloHero mb-5">Consigue tus objetivos<br>
-                organizándote</h3>
-              <p class="pHero mb-5">
+    <div *ngIf="!isLoggedIn" class="mt-auto">
+      <div class="contenido">
+        <div class="row ">
+          <div class="col-lg-4 ">
+            <div class="leftContent text-center mb-3" style="min-height: 70%;">
+              <h1>Logra tus objetivos <br> organizándote</h1>
+              <p class="mb-5 mt-4">
                 Organizador de rutinas de entrenamiento 📋<br>
                 Asistente de ejercicios diarios 📆<br>
                 Registro de Marcas personales 🎯<br>
-                Guarda tus comidas favoritas y crea dietas con ellas 🥪<br>
+                Guarda tus comidas favoritas y crea dietas con ellas 🥪
               </p>
-              <button class="btn btn-secondary btn-lg mb-5 p-4"
-                style="font-size: 25px;" routerLink="/auth/register"><strong
-                  class="text-light">¡Únete ahora y empieza tu rutina!</strong>
-              </button><br>
-              <img class="img-fluid"
-                src="../../../../../assets/img/LogosAppStoreGooglePlay_W.png"
+              <a class="buttonRegister "><i class="fa-solid fa-user"></i> Unete ahora y empieza tu rutina</a>
+              <br>
+              <img class="img-fluid mt-5" src="../../../../../assets/img/LogosAppStoreGooglePlay_W.png"
                 style="height: 60px;">
             </div>
+
+            <div class="leftContent mb-5" style="min-height: 28.5%;">
+              <i class="fa-solid fa-circle-info me-1"></i> Cuentas de prueba con diferentes roles<br><br>
+              Administrador:
+              <br><br>
+              Empleado:
+              <br><br>
+              Usuario:
+            </div>
           </div>
-        </div>
-        <div class="col-lg-6 mt-3 mb-3">
-          <div class="bloqueDer">
-            <img class="img-fluid rounded"
-              src="../../../../../assets/img/bannerIndex.png">
-            <div class="pt-5">
-              <p class="text-center"
-                style="font-style: italic; font-size: 20px;">¡Organiza tu vida
-                de forma saludable!</p>
+          <div class="col-lg-8">
+            <div class="rightContent  d-flex justify-content-center" style="min-height: 100%;">
+              <div>
+                <div class="d-flex align-items-center">
+                  <div class="me-2">
+                    <h1 class="text-center">Sumate a la organanización saludable ahora</h1>
+                    <p class="mb-4">Diseña tu propia rutina de entrenamiento y plan de comidas personalizado. Nuestra
+                      plataforma te recuerda diariamente los ejercicios y comidas que debes hacer, y te permite
+                      registrar tu progreso en el gimnasio. Lleva un control detallado de tus marcas personales, pesos y
+                      repeticiones. ¡Convierte tus objetivos en realidad!</p>
+
+                    <div class="text-center">
+                      <a class="buttonRegister"><i class="fa-solid fa-user"></i> ¿Eres usuario? Inicia sesión</a>
+                    </div>
+
+                  </div>
+                  <img class="img-fluid rounded" src="../../../../../assets/img/bannerIndex.png">
+                </div>
+
+                <div class="mt-4">
+ 
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- FOOTER -->
+      <div class="footerHolder mt-5  mt-lg-0">
+        <footer class="d-flex justify-content-between">
+          <a href="https://github.com/pablolop12" target="_blank" aria-label="Enlace a mi GitHub" class="navLink"><i
+              class="bi bi-fire me-1 icon"></i>Hecho por Pablo López L. </a>
+          <a href="https://github.com/pablolop12/Routine-Manager" target="_blank" aria-label="Enlace al código fuente"
+            class="navLink">Código fuente</a>
+        </footer>
+      </div>
     </div>
+
+
+
+
+
+
+
+
+
 
     <!-- BLOQUE 2 LOGEADO -->
     <div *ngIf="isLoggedIn">
-      <div class="container pt-3">
-        <div class="row">
-          <div class="col justify-content-center aling-items-center d-flex">
-            <div class="bg-white rounded p-3 text-center w-50">
-              <h3>Te damos la bienvenida, {{user.name}}</h3>
-              Este es tu panel de usuario, navega entre las pestañas para empezar a organizar tu mundo fitness.
+      <div class="contenido">
+        <div class="container pt-3">
+          <div class="row">
+            <div class="col justify-content-center aling-items-center d-flex">
+              <div class="bg-white rounded p-3 text-center w-50">
+                <h3>Te damos la bienvenida, {{user.name}}</h3>
+                Este es tu panel de usuario, navega entre las pestañas para empezar a organizar tu mundo fitness.
+              </div>
             </div>
           </div>
         </div>
-        
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footerHolder">
+        <footer class="d-flex justify-content-between mb-3">
+          <a href="https://github.com/pablolop12" target="_blank" aria-label="Enlace a mi GitHub" class="navLink"><i
+              class="bi bi-fire me-1 icon"></i>Hecho por Pablo López L. </a>
+          <a href="https://github.com/pablolop12/Routine-Manager" target="_blank" aria-label="Enlace al código fuente"
+            class="navLink">Código fuente</a>
+        </footer>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="bg-light text-white text-center py-3">
-    <div class="container">
-      <p class="mb-0">© 2024 FitPlanner. Todos los derechos reservados.</p>
-      <small>Diseñado por Pablo López Luján</small>
-    </div>
-  </footer>
+
+
+
+
+
 </div>

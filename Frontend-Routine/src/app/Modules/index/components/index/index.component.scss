@@ -3,22 +3,149 @@
     min-height: calc(100vh - 72px);
 }
 
-.tituloHero{
-    font-size: 45px;
-    font-weight: bolder;
-}
-
-.pHero{
-    font-size: 23px;
-}
-
-.bloqueDer{
-    background-color: white;
-    padding: 15px;
-    border-radius: 4px;
-    height: 100%;
+.contenido {
+    padding: 20px;
+    min-height: calc(100vh - 136px);
 }
 
 .row{
-    margin-top: 15px;
+    min-height: calc(100vh - 180px);
+
+}
+
+
+.leftContent{
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    
+    
+
+    h1{
+        font-size: 60px;
+        font-weight: 900;
+        color: #222e39;
+    }
+
+    p{
+        margin-top: 25px;
+        font-size: 18px;
+    }
+
+    
+
+    .buttonRegister {
+        cursor: pointer;
+        font-size: 20px;
+        text-decoration: none;
+        background-color: #ffcc00;
+        padding-inline: 30px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border: none;
+        font-weight: bold;
+        color: #222e39;
+        transition: ease 0.3s, box-shadow 0.3s ease;
+
+        i{
+            font-size: 18px;
+        }
+    }
+    
+    .buttonRegister:hover {
+        background-color: #fdd94b;
+        padding-inline: 30px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border: none;
+        font-weight: bold;
+        color: #222e39;
+        transform: translateY(-1px); /* Levantar el botón */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
+    
+    }
+
+
+}
+
+
+.rightContent{
+
+    padding: 15px;
+    border-radius: 5px;
+
+    align-items: center;
+
+    img{
+        max-height: 400px;
+    }
+
+    .buttonRegister {
+        cursor: pointer;
+        font-size: 20px;
+        text-decoration: none;
+        background-color: #ffffff;
+        padding-inline: 30px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border: none;
+        font-weight: bold;
+        color: #222e39;
+        transition: ease 0.3s, box-shadow 0.3s ease;
+
+        i{
+            font-size: 18px;
+        }
+    }
+    
+    .buttonRegister:hover {
+        background-color: #e2e2e2;
+        padding-inline: 30px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border: none;
+        font-weight: bold;
+        color: #222e39;
+        transform: translateY(-1px); /* Levantar el botón */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.059); /* Añadir sombra leve */
+    
+    }
+}
+
+
+
+
+
+.footerHolder{
+    background-color: white;
+}
+
+footer {
+    width: 90%;
+    margin: auto;
+    z-index: 10;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+   
+}
+
+
+.icon{
+    color: rgb(254, 85, 70);
+}
+
+
+.navLink{
+    text-decoration: none;
+    color: #222e39;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease; /* Para transiciones suaves */
+}
+
+.navLink:hover{
+    color: #6e6e6e;
 }
