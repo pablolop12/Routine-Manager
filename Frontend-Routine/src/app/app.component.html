@@ -1,4 +1,29 @@
-<app-navbar *ngIf="showNavbar"></app-navbar>
-<div class="test" [class.content]="showNavbar" [class.no-margin-top]="!showNavbar">
-    <router-outlet></router-outlet>
-</div>
+
+
+    <app-navbar *ngIf="showNavbar"></app-navbar>
+    <div class="test" [class.content]="showNavbar" [class.no-margin-top]="!showNavbar">
+        <div class="warning text-center">
+            <i class="fa-solid fa-gears me-2"></i><strong>¡Atención!</strong> el backend y la base de datos están siendo alojados en un servidor, por
+            lo que <strong>la web no está en funcionamiento</strong>.
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+
+<style>
+    .warning {
+        /*
+        Verde: #3c8a56
+        Rojo:
+        Amarillo: 
+        */
+        width: 100%;
+        position: fixed;
+        background-color: #be3c3c;
+        color: white;
+        padding: 5px;
+    }
+
+    strong, i{
+        color: white;
+    }
+</style>

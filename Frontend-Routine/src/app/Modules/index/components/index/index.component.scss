@@ -128,14 +128,15 @@
 
 
 
-.footerHolder{
-    background-color: white;    
-}
-
 footer {
     width: 90%;
     margin: auto;
     z-index: 10;
+    position: fixed;
+    z-index: 10;
+    bottom: -15px;
+    left: 0;
+    right: 0;
     bottom: -15px;
     left: 0;
     right: 0;
